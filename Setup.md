@@ -87,6 +87,12 @@ When we setup multiple display, we will change the resolution of a lower resolut
 
 TODO
 
+### Sound
+
+```
+sudo pacman alsa-utils pulseaudio
+```
+
 ### `URxvt`
 
 ### vim
