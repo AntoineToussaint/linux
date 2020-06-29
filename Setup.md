@@ -38,25 +38,27 @@ and uncomment the lines that fit the behavior you want (with or without password
 
 
 
-## Fully functional i3 setup: wifi, GPU
+## i3 & tools
 
-1. Tools everybody needs
+### Build tools
 
 ```
 sudo pacman -S git fakeroot make gcc automake autoconf
 ```
 
-Finally, install [yay](https://www.tecmint.com/install-yay-aur-helper-in-arch-linux-and-manjaro/) as your AUR package manager. Note that you get `go` as a dependency ;)
+Finally, install [yay](https://www.tecmint.com/install-yay-aur-helper-in-arch-linux-and-manjaro/) as your AUR package manager.
 
-1. Install X, i3 and LightDM:
+### X, i3 and LightDM:
 
 We will use LightDM as our display manager with `slick-greeter` and `i3-gaps` as our window manager.
 
 ```
-sudo pacman -S xorg-server xorg-xinit i3-gaps i3status lightdm rxvt-unicode
+sudo pacman -S xorg-server xorg-xinit i3-gaps i3status lightdm
 yay install lightdm-slick-greeter
 ```
+
 and set the greeter:
+
 ```
 /etc/lightdm/lightdm.conf
 [Seat:*]
@@ -70,14 +72,35 @@ And before rebooting:
 sudo systemctl enable lightdm
 ```
 
-and set scale and fonts if you have a high resolution screen:
+For now, set scale and fonts if you have a high resolution screen -- otherwise, everything will look super tiny:
 
 ```
 ~/.Xresources
 Xft.dpi: 300
-URxvt.font: xvt:Source Code Pro:size=14
 ```
 
-To get the list of fonts, `fc-list` will return all the fonts accessible on your system.
+When we setup multiple display, we will change the resolution of a lower resolution and drop the `dpi` configuration. Note that this is not really what we want to do but couldn't find a better way to far.
+
+**Note** To get the list of fonts, `fc-list` will return all the fonts accessible on your system.
+
+### NVidia and optimus-manager
+
+TODO
+
+### `URxvt`
+
+### vim
+
+See `.vimrc` for details.
+
+### zsh
+
+Install zsh and set to default.
+
+Start `zsh` from i3:
+
+```
+bindsym $mod+Return exec urxvt -e /usr/bin/zsh
+```
 
 ## Beautify i3
