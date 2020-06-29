@@ -36,6 +36,38 @@ EDITOR=vim visudo
 
 and uncomment the lines that fit the behavior you want (with or without password).
 
-## Fully functional i3 Setup
+
+
+## Fully functional i3 setup: wifi, GPU
+
+1. Tools everybody needs
+
+```
+sudo pacman -S git fakeroot make gcc automake autoconf
+```
+
+Finally, install [yay](https://www.tecmint.com/install-yay-aur-helper-in-arch-linux-and-manjaro/) as your AUR package manager. Note that you get `go` as a dependency ;)
+
+1. Install X, i3 and LightDM:
+
+We will use LightDM as our display manager with `slick-greeter` and `i3-gaps` as our window manager.
+
+```
+sudo pacman -S xorg-server xorg-xinit i3-gaps lightdm rxvt-unicode
+yay install lightdm-slick-greeter
+```
+and set the greeter:
+```
+/etc/lightdm/lightdm.conf
+[Seat:*]
+...
+greeter-session=lightdm-slick-greeter
+...
+```
+
+And before rebooting:
+```
+sudo systemctl enable lightdm
+```
 
 ## Beautify i3
