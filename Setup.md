@@ -53,7 +53,7 @@ Finally, install [yay](https://www.tecmint.com/install-yay-aur-helper-in-arch-li
 We will use LightDM as our display manager with `slick-greeter` and `i3-gaps` as our window manager.
 
 ```
-sudo pacman -S xorg-server xorg-xinit i3-gaps lightdm rxvt-unicode
+sudo pacman -S xorg-server xorg-xinit i3-gaps i3status lightdm rxvt-unicode
 yay install lightdm-slick-greeter
 ```
 and set the greeter:
@@ -69,5 +69,15 @@ And before rebooting:
 ```
 sudo systemctl enable lightdm
 ```
+
+and set scale and fonts if you have a high resolution screen:
+
+```
+~/.Xresources
+Xft.dpi: 300
+URxvt.font: xvt:Source Code Pro:size=14
+```
+
+To get the list of fonts, `fc-list` will return all the fonts accessible on your system.
 
 ## Beautify i3
